@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+public class ATM {
+	public static void main(String[]args) {
+		
+		double balance=5000;
+		
+		Scanner sc = new Scanner(System.in);
+		int pin=999;
+		int tries=1;
+		while(tries <= 3) {
+		
+			System.out.print("Please Enter Three Digit PIN:");
+			pin  = sc.nextInt(); 
+			if (pin == 999) {
+				System.out.println("Welcome to BNZ ATM!");  
+				break;
+			}
+			else {
+				tries++;
+				System.out.println("PIN is incorrect! Try again!");	        
+			}
+		} 
+		if(tries>3) {
+			System.out.println("You have entered wrong Pin more than three times, Your acccount has been Disabled!");
+			System.exit(0);
+		}
+		
+		boolean loopIs=true;
+		
+		while(loopIs) {
+			
+		System.out.println();
+		System.out.println("Please Enter Your Choice");
+		System.out.println("1. A/c Balance");
+		System.out.println("2. WithDraw Money");
+		System.out.println("3. Deposit Money");
+		System.out.println("4. Exit");
+		
+			int input =sc.nextInt();
+	   
+			switch(input) {
+			case 1: 
+				System.out.println("Your A/c Balance is: $"+balance);
+				break;
+		   case 2:
+				System.out.println("Please Enter Amount to be Withdrawn");
+				input =sc.nextInt();
+	 
+				if(balance>=input) {  
+					balance=balance-input;  
+					System.out.println("Please collect your money: $"+input);
+					System.out.println("Your New Balance is: $"+balance);
+					break;
+				}
+				else {
+					System.out.println("Insufficient Balance"); 
+					break;
+				}
+		   case 3:
+				System.out.println("Please Enter Amount to be Deposited");
+				input=sc.nextInt();
+				System.out.println("Your Money has been successfully deposited: $"+input);
+				balance=balance+input;
+				System.out.println("Your New Balance is: $"+balance);
+				break;
+			case 4:
+				System.out.println("Thank you for visiting BNZ ATM");
+				System.exit(0);	
+			default:
+				System.out.println("Please Enter Valid Choice");
+				
+		}
+			
+		}
+	}
+}
+
